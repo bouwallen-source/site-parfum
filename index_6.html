@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maison Wallen — Parfumerie de Niche</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --nuit: #F2EBE0;
+      --or: #2C1810;
+      --or-light: #4A2E1E;
+      --ivoire: #1E1914;
+      --ivoire-dark: #2C231B;
+      --nuit-light: #EDE4D6;
+      --nuit-mid: #E5D9C8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--nuit);
+      color: var(--ivoire);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(242,235,224,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(44,24,16,0.15);
+      transition: padding 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.22em;
+      color: var(--or);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--ivoire);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--or); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 4rem 4rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(44,24,16,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(44,24,16,0.05) 0%, transparent 60%);
+    }
+
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(44,24,16,0.04) 80px);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.08em;
+      color: var(--ivoire);
+      margin-bottom: 0.1em;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--or);
+    }
+
+    .hero-wallen {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 18vw, 16rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 0.85;
+      letter-spacing: -0.02em;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--or);
+      text-stroke: 1.5px var(--or);
+      margin-bottom: 0.15em;
+      opacity: 0;
+      transform: translateY(60px) scaleX(0.88);
+      animation: wallenReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-wallen::after {
+      content: 'Wallen';
+      position: absolute;
+      left: 0; top: 0;
+      color: var(--or);
+      opacity: 0.09;
+      filter: blur(18px);
+      z-index: -1;
+    }
+
+    @keyframes wallenReveal {
+      0%   { opacity: 0; transform: translateY(60px) scaleX(0.88); letter-spacing: 0.15em; }
+      60%  { opacity: 1; }
+      100% { opacity: 1; transform: translateY(0) scaleX(1); letter-spacing: -0.02em; }
+    }
+
+    .hero-sub {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ivoire);
+      opacity: 0;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.9s 0.55s forwards;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(30,25,20,0.65);
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.7s forwards;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--or);
+      color: var(--nuit);
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 400;
+      padding: 1rem 2.4rem;
+      border-radius: 0;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--or-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid rgba(44,24,16,0.5);
+      color: var(--or);
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1rem 2.4rem;
+      border-radius: 0;
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--or); color: var(--or-light); transform: translateY(-1px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s 1.3s forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(30,25,20,0.4);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(44,24,16,0.6), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 7rem 4rem; }
+
+    .section-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--or);
+      margin-bottom: 3rem;
+    }
+
+    /* ─── COLLECTION ─── */
+    #collection {
+      background: var(--nuit-light);
+      border-top: 1px solid rgba(44,24,16,0.1);
+    }
+
+    .collection-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .parfum-card {
+      background: var(--nuit);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.35s;
+      border: 1px solid rgba(44,24,16,0.08);
+    }
+
+    .parfum-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--or);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .parfum-card:hover { background: var(--nuit-mid); }
+    .parfum-card:hover::before { transform: scaleX(1); }
+
+    .parfum-number {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--or);
+      opacity: 0.6;
+      margin-bottom: 2rem;
+    }
+
+    .parfum-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      filter: sepia(1) saturate(0.5) brightness(1.4);
+    }
+
+    .parfum-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+      color: var(--ivoire);
+    }
+
+    .parfum-famille {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1.2rem;
+    }
+
+    .parfum-notes {
+      font-size: 0.8rem;
+      color: rgba(30,25,20,0.5);
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    .parfum-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--or);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .parfum-add {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--nuit);
+      background: var(--or);
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .parfum-add:hover { background: var(--or-light); }
+
+    /* ─── BLOG ─── */
+    #blog {
+      border-top: 1px solid rgba(44,24,16,0.1);
+    }
+
+    .blog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 1.5px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .blog-card {
+      background: var(--nuit-light);
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(44,24,16,0.08);
+      cursor: pointer;
+      transition: border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-card:hover { border-color: rgba(44,24,16,0.3); }
+
+    .blog-card.featured { background: var(--nuit-mid); }
+
+    .blog-tag {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .blog-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      color: var(--ivoire);
+    }
+
+    .blog-card.featured .blog-title { font-size: 2rem; }
+
+    .blog-excerpt {
+      font-size: 0.8rem;
+      color: rgba(30,25,20,0.5);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+
+    /* ─── MODALE ARTICLE ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(30,25,20,0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      overflow-y: auto;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-box {
+      background: var(--nuit-light);
+      border: 1px solid rgba(44,24,16,0.2);
+      max-width: 760px;
+      width: 100%;
+      padding: 3.5rem 3rem;
+      position: relative;
+      transform: translateY(30px);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      margin: auto;
+    }
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: 1px solid rgba(44,24,16,0.3);
+      color: var(--or);
+      width: 36px; height: 36px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: rgba(44,24,16,0.1); }
+    .modal-tag {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      color: var(--ivoire);
+    }
+    .modal-meta {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: rgba(30,25,20,0.3);
+      text-transform: uppercase;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(44,24,16,0.12);
+    }
+    .modal-body {
+      font-size: 0.95rem;
+      line-height: 1.95;
+      color: rgba(30,25,20,0.72);
+    }
+    .modal-body p { margin-bottom: 1.4rem; }
+    .modal-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--ivoire);
+      margin: 2rem 0 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    .modal-body .highlight {
+      border-left: 2px solid var(--or);
+      padding-left: 1.2rem;
+      color: rgba(30,25,20,0.55);
+      font-style: italic;
+      margin: 2rem 0;
+    }
+    .modal-loading {
+      text-align: center;
+      padding: 3rem 0;
+      color: rgba(30,25,20,0.4);
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+    }
+    .modal-loading::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--or);
+      margin: 1rem auto 0;
+      animation: loadingBar 1.5s ease-in-out infinite;
+    }
+    @keyframes loadingBar {
+      0%,100% { transform: scaleX(0.3); opacity: 0.4; }
+      50% { transform: scaleX(1); opacity: 1; }
+    }
+    .blog-card { cursor: pointer; }
+
+    .blog-meta {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: rgba(30,25,20,0.3);
+      text-transform: uppercase;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .blog-deco {
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 100px; height: 100px;
+      border: 1px solid rgba(44,24,16,0.06);
+      border-radius: 50%;
+    }
+
+    /* ─── NEWSLETTER ─── */
+    #contact {
+      background: var(--nuit-light);
+      border-top: 1px solid rgba(44,24,16,0.1);
+      text-align: center;
+    }
+
+    .newsletter-wrapper {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      margin-top: 2.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: rgba(30,25,20,0.05);
+      border: 1px solid rgba(44,24,16,0.3);
+      border-right: none;
+      padding: 1rem 1.4rem;
+      color: var(--ivoire);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .newsletter-input::placeholder { color: rgba(30,25,20,0.3); }
+    .newsletter-input:focus { border-color: var(--or); background: rgba(44,24,16,0.05); }
+
+    .newsletter-btn {
+      background: var(--or);
+      color: var(--nuit);
+      border: none;
+      padding: 1rem 1.8rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .newsletter-btn:hover { background: var(--or-light); }
+
+    .newsletter-note {
+      font-size: 0.7rem;
+      color: rgba(30,25,20,0.3);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-infos {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      text-align: center;
+    }
+
+    .contact-item-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item-val {
+      font-size: 0.85rem;
+      color: rgba(30,25,20,0.65);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2.5rem 4rem;
+      border-top: 1px solid rgba(44,24,16,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      letter-spacing: 0.25em;
+      color: var(--or);
+      text-transform: uppercase;
+    }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(30,25,20,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.15); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      section { padding: 5rem 2rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem; }
+      hero { padding: 6rem 2rem 4rem; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-input { border-right: 1px solid rgba(44,24,16,0.3); border-bottom: none; }
+    }
+
+    /* ─── MODALE PRODUIT ─── */
+    .product-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(30,25,20,0.97);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      overflow-y: auto;
+    }
+    .product-modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .product-modal-box {
+      background: var(--nuit-light);
+      border: 1px solid rgba(44,24,16,0.2);
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      transform: translateY(30px) scale(0.98);
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+      margin: auto;
+    }
+    .product-modal-overlay.open .product-modal-box {
+      transform: translateY(0) scale(1);
+    }
+    .product-modal-close {
+      position: absolute;
+      top: 1.2rem; right: 1.2rem;
+      z-index: 10;
+      background: none;
+      border: 1px solid rgba(44,24,16,0.3);
+      color: var(--or);
+      width: 34px; height: 34px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .product-modal-close:hover { background: rgba(44,24,16,0.1); }
+    .product-visual {
+      background: var(--nuit-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(44,24,16,0.1) 0%, transparent 70%);
+    }
+    .product-visual-icon {
+      font-size: 5rem;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 40px rgba(44,24,16,0.5));
+      animation: floatIcon 4s ease-in-out infinite;
+    }
+    .flacon-svg {
+      position: relative;
+      z-index: 2;
+      animation: floatIcon 4s ease-in-out infinite;
+    }
+    .flacon-halo {
+      position: absolute;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(44,24,16,0.18) 0%, rgba(44,24,16,0.06) 50%, transparent 70%);
+      animation: haloBreath 3s ease-in-out infinite;
+      z-index: 1;
+    }
+    .flacon-halo-2 {
+      position: absolute;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      border: 1px solid rgba(44,24,16,0.1);
+      animation: haloBreath 3s ease-in-out infinite 0.5s;
+      z-index: 1;
+    }
+    .flacon-halo-3 {
+      position: absolute;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      border: 1px solid rgba(44,24,16,0.05);
+      animation: haloBreath 3s ease-in-out infinite 1s;
+      z-index: 1;
+    }
+    @keyframes haloBreath {
+      0%,100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    .product-visual-num {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      color: rgba(44,24,16,0.4);
+      text-transform: uppercase;
+    }
+    @keyframes floatIcon {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .product-info {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .product-famille-badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--or);
+      border: 1px solid rgba(44,24,16,0.3);
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+    .product-modal-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      color: var(--ivoire);
+      margin-bottom: 1.4rem;
+    }
+    .product-modal-desc {
+      font-size: 0.88rem;
+      line-height: 1.9;
+      color: rgba(30,25,20,0.6);
+      margin-bottom: 2rem;
+    }
+    .notes-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1rem;
+    }
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 2.2rem;
+    }
+    .note-item {
+      background: rgba(44,24,16,0.05);
+      border: 1px solid rgba(44,24,16,0.12);
+      padding: 0.7rem 0.6rem;
+      text-align: center;
+    }
+    .note-type {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(30,25,20,0.35);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .note-val {
+      font-size: 0.78rem;
+      color: var(--ivoire);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+    .product-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(44,24,16,0.12);
+    }
+    .product-modal-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--or);
+    }
+    .product-buy-btn {
+      background: var(--or);
+      color: var(--nuit);
+      border: none;
+      padding: 0.9rem 2rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-weight: 400;
+    }
+    .product-buy-btn:hover { background: var(--or-light); transform: translateY(-1px); }
+    .product-buy-btn.added {
+      background: var(--nuit-mid);
+      color: var(--or);
+      border: 1px solid var(--or);
+    }
+    @media (max-width: 700px) {
+      .product-modal-box { grid-template-columns: 1fr; }
+      .product-visual { min-height: 220px; }
+    }
+
+
+    /* ─── PANIER SIDEBAR ─── */
+    .cart-icon-btn {
+      background: none;
+      border: 1px solid rgba(44,24,16,0.3);
+      color: var(--or);
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .cart-icon-btn:hover { background: rgba(44,24,16,0.08); border-color: var(--or); }
+    .cart-badge {
+      background: var(--ivoire);
+      color: var(--nuit);
+      font-size: 0.58rem;
+      font-weight: 600;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .cart-badge.visible { opacity: 1; transform: scale(1); }
+
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(30,25,20,0.55);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    .cart-sidebar {
+      position: fixed;
+      top: 0; right: 0;
+      height: 100vh;
+      width: 420px;
+      max-width: 100vw;
+      background: var(--nuit-light);
+      border-left: 1px solid rgba(44,24,16,0.15);
+      z-index: 401;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .cart-sidebar.open { transform: translateX(0); }
+
+    .cart-header {
+      padding: 1.8rem 2rem 1.4rem;
+      border-bottom: 1px solid rgba(44,24,16,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ivoire);
+    }
+    .cart-header-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--or);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .cart-close {
+      background: none;
+      border: 1px solid rgba(44,24,16,0.25);
+      color: var(--or);
+      width: 32px; height: 32px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .cart-close:hover { background: rgba(44,24,16,0.1); }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+    }
+    .cart-items::-webkit-scrollbar { width: 3px; }
+    .cart-items::-webkit-scrollbar-track { background: transparent; }
+    .cart-items::-webkit-scrollbar-thumb { background: rgba(44,24,16,0.2); }
+
+    .cart-empty {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: rgba(30,25,20,0.3);
+    }
+    .cart-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; opacity: 0.4; }
+    .cart-empty p { font-size: 0.82rem; letter-spacing: 0.08em; }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(44,24,16,0.07);
+      animation: fadeUp 0.3s ease forwards;
+    }
+    .cart-item-visual {
+      background: var(--nuit-mid);
+      border: 1px solid rgba(44,24,16,0.15);
+      height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .cart-item-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--ivoire);
+      margin-bottom: 3px;
+    }
+    .cart-item-famille {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(44,24,16,0.6);
+      margin-bottom: 0.6rem;
+    }
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .qty-btn {
+      background: none;
+      border: 1px solid rgba(44,24,16,0.2);
+      color: var(--or);
+      width: 22px; height: 22px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+      line-height: 1;
+    }
+    .qty-btn:hover { background: rgba(44,24,16,0.1); }
+    .qty-val {
+      font-size: 0.82rem;
+      min-width: 18px;
+      text-align: center;
+      color: var(--ivoire);
+    }
+    .cart-item-right {
+      text-align: right;
+    }
+    .cart-item-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--or);
+      margin-bottom: 0.5rem;
+    }
+    .cart-item-delete {
+      background: none;
+      border: none;
+      color: rgba(30,25,20,0.25);
+      font-size: 0.75rem;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+      padding: 0;
+    }
+    .cart-item-delete:hover { color: rgba(220,80,80,0.7); }
+
+    .cart-footer {
+      padding: 1.5rem 2rem 2rem;
+      border-top: 1px solid rgba(44,24,16,0.1);
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+    .cart-total-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(30,25,20,0.45);
+    }
+    .cart-total-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--or);
+    }
+    .cart-checkout-btn {
+      width: 100%;
+      background: var(--or);
+      color: var(--nuit);
+      border: none;
+      padding: 1.1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+    }
+    .cart-checkout-btn:hover { background: var(--or-light); }
+    .cart-continue {
+      width: 100%;
+      background: none;
+      border: 1px solid rgba(44,24,16,0.2);
+      color: rgba(30,25,20,0.45);
+      padding: 0.8rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .cart-continue:hover { border-color: rgba(44,24,16,0.4); color: var(--ivoire); }
+
+
+    /* ─── CURSEUR PERSONNALISÉ ─── */
+    * { cursor: none !important; }
+
+    .cursor-dot {
+      position: fixed;
+      width: 8px; height: 8px;
+      background: var(--or);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, opacity 0.2s, background 0.2s;
+      mix-blend-mode: multiply;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid var(--or);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s cubic-bezier(0.16,1,0.3,1),
+                  height 0.35s cubic-bezier(0.16,1,0.3,1),
+                  opacity 0.3s,
+                  border-color 0.3s;
+      opacity: 0.6;
+    }
+    .cursor-label {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--or);
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    body.cursor-hover .cursor-ring {
+      width: 64px; height: 64px;
+      opacity: 1;
+      border-color: var(--or);
+    }
+    body.cursor-hover .cursor-dot {
+      width: 4px; height: 4px;
+      opacity: 0.5;
+    }
+    body.cursor-hover .cursor-label { opacity: 1; }
+    body.cursor-click .cursor-dot {
+      width: 12px; height: 12px;
+      opacity: 0.8;
+    }
+    body.cursor-click .cursor-ring {
+      width: 28px; height: 28px;
+    }
+
+    /* ─── MICRO-ANIMATIONS CARTES PARFUM ─── */
+    .parfum-card {
+      transition: background 0.35s, transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s !important;
+    }
+    .parfum-card:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 20px 60px rgba(44,24,16,0.12) !important;
+    }
+    .parfum-icon {
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.3s;
+      display: inline-block;
+    }
+    .parfum-card:hover .parfum-icon {
+      transform: scale(1.2) rotate(-5deg);
+      filter: sepia(0.3) saturate(1.5) brightness(1.2);
+    }
+    .parfum-name {
+      transition: letter-spacing 0.4s ease, color 0.3s;
+    }
+    .parfum-card:hover .parfum-name {
+      letter-spacing: 0.1em;
+      color: var(--or);
+    }
+
+    /* ─── MICRO-ANIMATIONS BLOG ─── */
+    .blog-card {
+      transition: border-color 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s !important;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 16px 48px rgba(44,24,16,0.1) !important;
+    }
+    .blog-title {
+      transition: color 0.3s;
+    }
+    .blog-card:hover .blog-title { color: var(--or); }
+
+    /* ─── MICRO-ANIMATIONS NAV ─── */
+    .nav-logo {
+      transition: letter-spacing 0.4s ease;
+    }
+    .nav-logo:hover { letter-spacing: 0.3em; }
+
+    /* ─── MICRO-ANIMATIONS BOUTONS ─── */
+    .btn-primary, .btn-ghost, .cart-checkout-btn, .newsletter-btn {
+      transition: all 0.25s ease !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after, .btn-ghost::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.08);
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
+    }
+    .btn-primary:hover::after, .btn-ghost:hover::after {
+      transform: translateX(0);
+    }
+
+    /* ─── MICRO-ANIMATION HERO WALLEN ─── */
+    .hero-wallen {
+      transition: letter-spacing 0.6s ease;
+    }
+    .hero-wallen:hover {
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── REVEAL AMÉLIORÉ ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1) !important;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── PARFUM CARD NUMBER ANIMATION ─── */
+    .parfum-number {
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .parfum-card:hover .parfum-number {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    /* ─── NOTES OLFACTIVES HOVER ─── */
+    .note-item {
+      transition: background 0.3s, border-color 0.3s, transform 0.3s !important;
+    }
+    .note-item:hover {
+      background: rgba(44,24,16,0.08) !important;
+      border-color: rgba(44,24,16,0.25) !important;
+      transform: translateY(-2px);
+    }
+
+  </style>
+</head>
+<body>
+  <!-- CURSEUR -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-label" id="cursorLabel"></div>
+
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Maison Wallen</a>
+    <ul class="nav-links">
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#blog">Univers</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="cart-icon-btn" onclick="openCart()">
+      Panier <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Parfumerie de niche — Paris</p>
+      <h1 class="hero-title">Maison</h1>
+      <span class="hero-wallen">Wallen</span>
+      <p class="hero-sub">L'art du parfum d'exception</p>
+      <p class="hero-desc">
+        Des fragrances conçues pour celles et ceux qui refusent l'ordinaire. Chaque flacon est une invitation à un voyage olfactif unique, entre tradition et audace.
+      </p>
+      <div class="hero-cta">
+        <a href="#collection" class="btn-primary">Explorer la collection</a>
+        <a href="#blog" class="btn-ghost">Notre univers</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- COLLECTION -->
+  <section id="collection">
+    <div class="collection-header reveal">
+      <p class="section-label">Notre sélection</p>
+      <h2 class="section-title">La Collection</h2>
+      <div class="divider" style="margin: 0 auto 1rem;"></div>
+      <p style="color: rgba(30,25,20,0.5); font-size: 0.9rem; max-width: 480px; margin: 0 auto; line-height: 1.8;">
+        Cinq créations exclusives, chacune racontant une histoire singulière.
+      </p>
+    </div>
+
+    <div class="collection-grid">
+      <div class="parfum-card reveal">
+        <p class="parfum-number">N° 01</p>
+        <span class="parfum-icon">☀️</span>
+        <h3 class="parfum-name">Souffle d'Été</h3>
+        <p class="parfum-famille">Floral Hespéridé</p>
+        <p class="parfum-notes">Néroli · Fleur d'Oranger · Musc Blanc · Vétiver</p>
+        <div class="parfum-price">
+          <span>79 €</span>
+          <button class="parfum-add">Ajouter</button>
+        </div>
+      </div>
+
+      <div class="parfum-card reveal">
+        <p class="parfum-number">N° 02</p>
+        <span class="parfum-icon">🌙</span>
+        <h3 class="parfum-name">Aube Orientale</h3>
+        <p class="parfum-famille">Oriental Épicé</p>
+        <p class="parfum-notes">Rose de Damas · Safran · Oud · Vanille Bourbon</p>
+        <div class="parfum-price">
+          <span>79 €</span>
+          <button class="parfum-add">Ajouter</button>
+        </div>
+      </div>
+
+      <div class="parfum-card reveal">
+        <p class="parfum-number">N° 03</p>
+        <span class="parfum-icon">🏛️</span>
+        <h3 class="parfum-name">Place Vendôme</h3>
+        <p class="parfum-famille">Chypré Poudré</p>
+        <p class="parfum-notes">Iris · Jasmin · Santal de Mysore · Ambre Gris</p>
+        <div class="parfum-price">
+          <span>79 €</span>
+          <button class="parfum-add">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="blog-header reveal" style="max-width: 1200px; margin-left: auto; margin-right: auto;">
+      <div>
+        <p class="section-label">Univers olfactif</p>
+        <h2 class="section-title">Le Carnet de la Maison</h2>
+        <div class="divider"></div>
+      </div>
+      <a href="#" class="btn-ghost" style="font-size: 0.65rem; padding: 0.7rem 1.6rem;">Tous les articles</a>
+    </div>
+
+    <div class="blog-grid" style="max-width: 1200px; margin: 0 auto;">
+      <div class="blog-card featured reveal">
+        <div class="blog-deco"></div>
+        <span class="blog-tag">À la une · Savoir-faire</span>
+        <h3 class="blog-title">L'art de la pyramide olfactive : comment naît un parfum ?</h3>
+        <p class="blog-excerpt">Derrière chaque fragrance se cache un architecte de l'invisible. Nous vous emmenons dans les coulisses de la création parfumière, de la sélection des matières premières jusqu'au flacon final.</p>
+        <div class="blog-meta">
+          <span>12 janvier 2025</span>
+          <span>8 min de lecture</span>
+        </div>
+      </div>
+
+      <div class="blog-card reveal">
+        <div class="blog-deco"></div>
+        <span class="blog-tag">Guide · Tendances</span>
+        <h3 class="blog-title">Choisir son parfum selon la saison</h3>
+        <p class="blog-excerpt">Les températures influencent la diffusion des molécules. Nos conseils pour adapter votre signature olfactive à chaque époque de l'année.</p>
+        <div class="blog-meta">
+          <span>3 janvier 2025</span>
+          <span>5 min</span>
+        </div>
+      </div>
+
+      <div class="blog-card reveal">
+        <div class="blog-deco"></div>
+        <span class="blog-tag">Matières · Nature</span>
+        <h3 class="blog-title">Le oud : or noir de la parfumerie</h3>
+        <p class="blog-excerpt">Bois précieux issu des forêts d'Asie, le oud est l'une des matières les plus rares et fascinantes de la parfumerie mondiale.</p>
+        <div class="blog-meta">
+          <span>20 déc. 2024</span>
+          <span>6 min</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALE PRODUIT -->
+  <div class="product-modal-overlay" id="productModal" onclick="closeProductModalOnBg(event)">
+    <div class="product-modal-box">
+      <button class="product-modal-close" onclick="closeProductModal()">✕</button>
+      <div class="product-visual">
+        <div class="flacon-halo-3"></div>
+        <div class="flacon-halo-2"></div>
+        <div class="flacon-halo"></div>
+        <div class="flacon-svg" id="pmFlaconWrap">
+          <svg id="pmFlacon" viewBox="0 0 120 220" width="110" height="200" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+        <span class="product-visual-num" id="pmNum"></span>
+      </div>
+      <div class="product-info">
+        <span class="product-famille-badge" id="pmFamille"></span>
+        <h2 class="product-modal-name" id="pmName"></h2>
+        <p class="product-modal-desc" id="pmDesc"></p>
+        <p class="notes-title">Pyramide olfactive</p>
+        <div class="notes-grid" id="pmNotes"></div>
+        <div class="product-price-row">
+          <span class="product-modal-price" id="pmPrice"></span>
+          <button class="product-buy-btn" id="pmBuyBtn" onclick="handleProductBuy(this)">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALE ARTICLE -->
+  <div class="modal-overlay" id="articleModal" onclick="closeModalOnBg(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- CONTACT / NEWSLETTER -->
+  <section id="contact">
+    <div class="newsletter-wrapper reveal">
+      <p class="section-label">Rejoindre la maison</p>
+      <h2 class="section-title">Restez dans notre univers</h2>
+      <div class="divider" style="margin: 0 auto 1.5rem;"></div>
+      <p style="color: rgba(30,25,20,0.5); font-size: 0.88rem; line-height: 1.85;">
+        Nouveautés en avant-première, conseils olfactifs exclusifs et invitations à nos événements privés.
+      </p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" class="newsletter-input" placeholder="Votre adresse e-mail" required />
+        <button type="submit" class="newsletter-btn">S'inscrire</button>
+      </form>
+      <p class="newsletter-note">Aucun spam. Désinscription possible à tout moment.</p>
+    </div>
+
+    <div class="contact-infos reveal">
+      <div class="contact-item">
+        <p class="contact-item-label">E-mail</p>
+        <p class="contact-item-val">contact@maisonwallen.fr</p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Atelier</p>
+        <p class="contact-item-val">Paris, France</p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Horaires</p>
+        <p class="contact-item-val">Lun–Sam · 10h–19h</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Maison Wallen</span>
+    <span class="footer-copy">© 2025 Maison Wallen. Tous droits réservés.</span>
+  </footer>
+
+  <script>
+
+    // ── Articles data
+    const articles = [
+      {
+        tag: "À la une · Savoir-faire",
+        title: "L'art de la pyramide olfactive : comment naît un parfum ?",
+        date: "12 janvier 2025",
+        read: "8 min de lecture",
+        prompt: "Écris un article de blog complet et captivant pour la parfumerie de niche Maison Wallen, sur le thème : L'art de la pyramide olfactive — comment naît un parfum ? Adopte un ton élégant, passionné et accessible. Structure l'article avec une introduction, plusieurs sous-titres (h3), une citation mise en valeur (blockquote), et une conclusion. Environ 500 mots. Réponds uniquement en HTML avec des balises <p>, <h3>, et <blockquote class=\"highlight\">. Pas de balises html/head/body."
+      },
+      {
+        tag: "Guide · Tendances",
+        title: "Choisir son parfum selon la saison",
+        date: "3 janvier 2025",
+        read: "5 min de lecture",
+        prompt: "Écris un article de blog complet et captivant pour la parfumerie de niche Maison Wallen, sur le thème : Comment choisir son parfum selon la saison ? Adopte un ton élégant, passionné et accessible. Structure l'article avec une introduction, plusieurs sous-titres (h3) — un par saison, une citation mise en valeur (blockquote), et une conclusion. Environ 500 mots. Réponds uniquement en HTML avec des balises <p>, <h3>, et <blockquote class=\"highlight\">. Pas de balises html/head/body."
+      },
+      {
+        tag: "Matières · Nature",
+        title: "Le oud : or noir de la parfumerie",
+        date: "20 déc. 2024",
+        read: "6 min de lecture",
+        prompt: "Écris un article de blog complet et captivant pour la parfumerie de niche Maison Wallen, sur le thème : Le oud, or noir de la parfumerie — origines, extraction, utilisation. Adopte un ton élégant, passionné et accessible. Structure l'article avec une introduction, plusieurs sous-titres (h3), une citation mise en valeur (blockquote), et une conclusion. Environ 500 mots. Réponds uniquement en HTML avec des balises <p>, <h3>, et <blockquote class=\"highlight\">. Pas de balises html/head/body."
+      }
+    ];
+
+    // Ouvrir un article
+    async function openArticle(index) {
+      const article = articles[index];
+      const modal = document.getElementById('articleModal');
+      const content = document.getElementById('modalContent');
+
+      content.innerHTML = `
+        <span class="modal-tag">${article.tag}</span>
+        <h2 class="modal-title">${article.title}</h2>
+        <div class="modal-meta"><span>${article.date}</span><span>${article.read}</span></div>
+        <div class="modal-body"><div class="modal-loading">Chargement de l'article</div></div>
+      `;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      try {
+        const response = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model: "claude-sonnet-4-20250514",
+            max_tokens: 1000,
+            messages: [{ role: "user", content: article.prompt }]
+          })
+        });
+        const data = await response.json();
+        const html = data.content.map(i => i.text || '').join('');
+        content.querySelector('.modal-body').innerHTML = html;
+      } catch (err) {
+        content.querySelector('.modal-body').innerHTML = '<p>Impossible de charger l\'article pour le moment.</p>';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('articleModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnBg(e) {
+      if (e.target === document.getElementById('articleModal')) closeModal();
+    }
+
+    // Fermer avec Echap
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Attacher les clics aux cartes blog
+    document.querySelectorAll('.blog-card').forEach((card, i) => {
+      card.addEventListener('click', () => openArticle(i));
+    });
+
+
+    // ── PANIER ──
+    let cart = [];
+
+    function openCart() {
+      document.getElementById('cartOverlay').classList.add('open');
+      document.getElementById('cartSidebar').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      renderCart();
+    }
+
+    function closeCart() {
+      document.getElementById('cartOverlay').classList.remove('open');
+      document.getElementById('cartSidebar').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function addToCart(index) {
+      const p = parfums[index];
+      const existing = cart.find(i => i.index === index);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ index, name: p.name, famille: p.famille, icon: p.icon, price: 79, qty: 1 });
+      }
+      updateCartBadge();
+      renderCart();
+      openCart();
+    }
+
+    function updateCartBadge() {
+      const total = cart.reduce((s, i) => s + i.qty, 0);
+      const badge = document.getElementById('cartBadge');
+      badge.textContent = total;
+      badge.classList.toggle('visible', total > 0);
+    }
+
+    function changeQty(index, delta) {
+      const item = cart.find(i => i.index === index);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(i => i.index !== index);
+      updateCartBadge();
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart = cart.filter(i => i.index !== index);
+      updateCartBadge();
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const footer = document.getElementById('cartFooter');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="cart-empty">
+            <span class="cart-empty-icon">◇</span>
+            <p>Votre panier est vide</p>
+          </div>`;
+        footer.style.display = 'none';
+        return;
+      }
+      footer.style.display = 'block';
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-visual">${item.icon}</div>
+          <div>
+            <p class="cart-item-name">${item.name}</p>
+            <p class="cart-item-famille">${item.famille}</p>
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="changeQty(${item.index}, -1)">−</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${item.index}, +1)">+</button>
+            </div>
+          </div>
+          <div class="cart-item-right">
+            <p class="cart-item-price">${item.qty * item.price} €</p>
+            <button class="cart-item-delete" onclick="removeFromCart(${item.index})">Retirer</button>
+          </div>
+        </div>
+      `).join('');
+      const total = cart.reduce((s, i) => s + i.qty * i.price, 0);
+      document.getElementById('cartTotal').textContent = total + ' €';
+    }
+
+
+    // ── CURSEUR PERSONNALISÉ
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    const label = document.getElementById('cursorLabel');
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = mouseX + 'px';
+      dot.style.top = mouseY + 'px';
+      label.style.left = (mouseX + 30) + 'px';
+      label.style.top = (mouseY + 20) + 'px';
+    });
+
+    // Anneau avec lag
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Hover sur éléments interactifs
+    const hoverEls = document.querySelectorAll('a, button, .parfum-card, .blog-card, .parfum-add, .cart-icon-btn');
+    hoverEls.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        document.body.classList.add('cursor-hover');
+        const tag = el.dataset.cursor || '';
+        label.textContent = tag;
+      });
+      el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('cursor-hover');
+        label.textContent = '';
+      });
+    });
+
+    // Labels contextuels
+    document.querySelectorAll('.parfum-card').forEach(el => el.dataset.cursor = 'Découvrir');
+    document.querySelectorAll('.blog-card').forEach(el => el.dataset.cursor = 'Lire');
+    document.querySelectorAll('.parfum-add').forEach(el => el.dataset.cursor = 'Ajouter');
+    document.querySelectorAll('.cart-icon-btn').forEach(el => el.dataset.cursor = 'Panier');
+    document.querySelectorAll('.btn-primary').forEach(el => el.dataset.cursor = 'Explorer');
+
+    // Clic
+    document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+    document.addEventListener('mouseup', () => document.body.classList.remove('cursor-click'));
+
+    // Masquer quand hors fenêtre
+    document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = ''; });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Newsletter
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.newsletter-btn');
+      btn.textContent = 'Merci !';
+      btn.style.background = '#3a5a3c';
+      btn.style.color = '#c9e8cb';
+      setTimeout(() => {
+        btn.textContent = "S'inscrire";
+        btn.style.background = '';
+        btn.style.color = '';
+        e.target.reset();
+      }, 3000);
+    }
+
+
+    // ── Données parfums
+    const parfums = [
+      {
+        num: "N° 01",
+        icon: "☀️",
+        name: "Souffle d'Été",
+        famille: "Floral Hespéridé",
+        price: "79 €",
+        desc: "Une fragrance solaire et légère qui capture l'essence d'un matin d'été en Méditerranée. Fraîche sans être banale, lumineuse sans être criarde — Souffle d'Été est une invitation à la douceur de vivre.",
+        notes: [
+          { type: "Tête", val: "Néroli" },
+          { type: "Tête", val: "Bergamote" },
+          { type: "Cœur", val: "Fleur d'Oranger" },
+          { type: "Cœur", val: "Jasmin" },
+          { type: "Fond", val: "Musc Blanc" },
+          { type: "Fond", val: "Vétiver" }
+        ]
+      },
+      {
+        num: "N° 02",
+        icon: "🌙",
+        name: "Aube Orientale",
+        famille: "Oriental Épicé",
+        price: "95 €",
+        desc: "Un voyage sensoriel entre les souks parfumés et les palais de soie. Aube Orientale enveloppe la peau d'une chaleur opulente et mystérieuse, comme un secret murmuré à l'aube.",
+        notes: [
+          { type: "Tête", val: "Safran" },
+          { type: "Tête", val: "Cardamome" },
+          { type: "Cœur", val: "Rose de Damas" },
+          { type: "Cœur", val: "Encens" },
+          { type: "Fond", val: "Oud" },
+          { type: "Fond", val: "Vanille Bourbon" }
+        ]
+      },
+      {
+        num: "N° 03",
+        icon: "🏛️",
+        name: "Place Vendôme",
+        famille: "Chypré Poudré",
+        price: "105 €",
+        desc: "L'élégance parisienne distillée en flacon. Place Vendôme évoque le faste discret des grandes maisons, la pierre ancienne sous la pluie fine, et le murmure du luxe véritable.",
+        notes: [
+          { type: "Tête", val: "Bergamote" },
+          { type: "Tête", val: "Galbanum" },
+          { type: "Cœur", val: "Iris" },
+          { type: "Cœur", val: "Jasmin" },
+          { type: "Fond", val: "Santal" },
+          { type: "Fond", val: "Ambre Gris" }
+        ]
+      }
+    ];
+
+    function openProductModal(index) {
+      const p = parfums[index];
+      // Dessiner le flacon SVG
+      const color = ['#2C1810','#1A0E08','#4A2E1E'][index] || '#2C1810';
+      document.getElementById('pmFlacon').innerHTML = `
+        <!-- Bouchon -->
+        <rect x="42" y="8" width="36" height="14" rx="4" fill="${color}" opacity="0.9"/>
+        <rect x="48" y="4" width="24" height="8" rx="3" fill="${color}" opacity="0.7"/>
+        <!-- Col -->
+        <rect x="48" y="22" width="24" height="18" rx="2" fill="${color}" opacity="0.5"/>
+        <!-- Corps -->
+        <rect x="28" y="40" width="64" height="130" rx="10" fill="none" stroke="${color}" stroke-width="1.5" opacity="0.9"/>
+        <rect x="30" y="42" width="60" height="126" rx="9" fill="${color}" opacity="0.07"/>
+        <!-- Reflet gauche -->
+        <rect x="34" y="52" width="6" height="80" rx="3" fill="${color}" opacity="0.18"/>
+        <!-- Reflet petit -->
+        <rect x="34" y="48" width="6" height="10" rx="3" fill="${color}" opacity="0.3"/>
+        <!-- Étiquette -->
+        <rect x="36" y="90" width="48" height="52" rx="4" fill="${color}" opacity="0.12"/>
+        <rect x="36" y="90" width="48" height="52" rx="4" fill="none" stroke="${color}" stroke-width="0.8" opacity="0.4"/>
+        <!-- Texte étiquette -->
+        <text x="60" y="112" text-anchor="middle" fill="${color}" font-size="6" font-family="Cormorant Garamond, serif" opacity="0.9" letter-spacing="1">MAISON</text>
+        <text x="60" y="122" text-anchor="middle" fill="${color}" font-size="6" font-family="Cormorant Garamond, serif" opacity="0.9" letter-spacing="1">WALLEN</text>
+        <!-- Ligne déco étiquette -->
+        <line x1="42" y1="127" x2="78" y2="127" stroke="${color}" stroke-width="0.5" opacity="0.4"/>
+        <!-- Bas arrondi -->
+        <ellipse cx="60" cy="170" rx="32" ry="4" fill="${color}" opacity="0.08"/>
+      `;
+      document.getElementById('pmNum').textContent = p.num;
+      document.getElementById('pmFamille').textContent = p.famille;
+      document.getElementById('pmName').textContent = p.name;
+      document.getElementById('pmDesc').textContent = p.desc;
+      document.getElementById('pmPrice').textContent = p.price;
+      const btn = document.getElementById('pmBuyBtn');
+      btn.textContent = 'Ajouter au panier';
+      btn.classList.remove('added');
+      btn.style = '';
+      document.getElementById('pmNotes').innerHTML = p.notes.map(n => `
+        <div class="note-item">
+          <span class="note-type">${n.type}</span>
+          <span class="note-val">${n.val}</span>
+        </div>
+      `).join('');
+      document.getElementById('productModal').dataset.index = index;
+      document.getElementById('productModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeProductModalOnBg(e) {
+      if (e.target === document.getElementById('productModal')) closeProductModal();
+    }
+
+    function handleProductBuy(btn) {
+      const idx = parseInt(document.getElementById('productModal').dataset.index || 0);
+      addToCart(idx);
+      btn.textContent = '✓ Ajouté';
+      btn.classList.add('added');
+      setTimeout(() => {
+        btn.textContent = 'Ajouter au panier';
+        btn.classList.remove('added');
+      }, 2000);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeProductModal(); closeModal(); }
+    });
+
+    // Attacher clic sur les cartes parfum (hors bouton ajouter)
+    document.querySelectorAll('.parfum-card').forEach((card, i) => {
+      card.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('parfum-add')) {
+          openProductModal(i);
+        }
+      });
+    });
+
+    // Ajouter au panier
+    document.querySelectorAll('.parfum-add').forEach((btn, i) => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        addToCart(i);
+      });
+    });
+  </script>
+
+  <!-- PANIER SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <div>
+        <p class="cart-header-title">Votre Panier</p>
+        <p class="cart-header-sub">Maison Wallen</p>
+      </div>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-amount" id="cartTotal">0 €</span>
+      </div>
+      <button class="cart-checkout-btn">Commander →</button>
+      <button class="cart-continue" onclick="closeCart()">Continuer mes achats</button>
+    </div>
+  </div>
+
+</body>
+</html>
